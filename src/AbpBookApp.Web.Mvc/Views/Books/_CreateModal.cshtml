@@ -1,0 +1,70 @@
+﻿@using Abp.MultiTenancy
+@using AbpBookApp.Books.Dto
+@using AbpBookApp.MultiTenancy
+@using AbpBookApp.Web.Models.Common.Modals
+@{
+    Layout = null;
+    ViewData["Title"] = "_CreateModel";
+    var categories = ViewBag.Categories;
+    var authors = ViewBag.Authors;
+}
+@model AbpBookApp.Books.Dto.CreateBookDto
+<div class="modal fade" id="BookCreateModal" tabindex="-1" role="dialog" aria-labelledby="BookCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewBook")))
+            <form role="form" class="form-horizontal" asp-controller="Books" enctype="multipart/form-data" asp-action="CreateModal" method="post">
+                <div class="modal-body">
+                    <div class="form-group row required">
+                        <label asp-for="Name" class="col-md-3 col-form-label">@L("BookName")</label>
+                        <div class="col-md-9">
+                            <input asp-for="Name" type="text" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row required">
+                        <label asp-for="ISBN" class="col-md-3 col-form-label">@L("ISBN")</label>
+                        <div class="col-md-9">
+                            <input asp-for="ISBN" type="text" name="ISBN" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-group row required">
+                        <label asp-for="Description" class="col-md-3 col-form-label">@L("description")</label>
+                        <div class="col-md-9">
+                            <input asp-for="Description" type="text" name="description" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group row required">
+                        <select class="form-control" asp-for="AuthorId">
+                            <option value="">Select a author</option>
+                            @foreach (var author in authors)
+                            {
+                                <option value="@author.Id">@author.Firstname @author.Lastname</option>
+                            }
+                        </select>
+                    </div>
+                  <div class="form-group row required">
+                   <select class="form-control" asp-for="CategoryId">
+                     <option value="">Select a category</option>
+                    @foreach (var category in categories)
+                    {
+                            <option value="@category.Id">@category.CategoryName</option>
+                    }
+                 </select>
+</div>
+
+                    <div class="form-group row required">
+                        <label asp-for="PublishDate" class="col-md-3 col-form-label">@L("PublishDate")</label>
+                        <div class="col-md-9">
+                            <input asp-for="PublishDate" type="date" name="PublishDate" class="form-control">
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="ImagePath" />
+                    <input type="file" name="imageFile" accept="image/*" id="imageInput">
+                    <span asp-validation-for="ImagePath" class="text-danger"></span>
+                    <img id="previewImage" style="max-width: 200px; max-height: 200px;" />
+                </div>
+                @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+            </form>
+        </div>
+    </div>
+</div>
