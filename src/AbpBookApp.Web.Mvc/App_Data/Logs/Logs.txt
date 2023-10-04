@@ -5697,3 +5697,972 @@ INFO  2023-10-04 12:04:13,393 [18   ] Mvc.Infrastructure.ContentResultExecutor -
 INFO  2023-10-04 12:04:13,394 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 119.6885ms
 INFO  2023-10-04 12:04:13,394 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
 INFO  2023-10-04 12:04:13,394 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320178419756568 - - - 200 23784 application/x-javascript;+charset=utf-8 128.9062ms
+INFO  2023-10-04 12:04:17,027 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:17,031 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:22,043 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:22,047 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:25,656 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/Authors - -
+INFO  2023-10-04 12:04:25,660 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'AbpBookApp.Web.Controllers.AuthorsController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:04:25,666 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Authors", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Index(AbpBookApp.Authors.Dto.PagedAuthorResultRequestDto) on controller AbpBookApp.Web.Controllers.AuthorsController (AbpBookApp.Web.Mvc).
+INFO  2023-10-04 12:04:25,670 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:25,677 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Authors] AS [a]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:04:25,682 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Firstname], [a].[IsDeleted], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Lastname]
+FROM [Authors] AS [a]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))
+ORDER BY [a].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+INFO  2023-10-04 12:04:25,702 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:25,707 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 512), @p1='?' (Size = 64), @p2='?' (Size = 128), @p3='?' (Size = 2000), @p4='?' (Size = 2000), @p5='?' (Size = 1024), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (DbType = Int64), @p10='?' (Size = 256), @p11='?' (Size = 1024), @p12='?' (Size = 4000), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AbpAuditLogs] ([BrowserInfo], [ClientIpAddress], [ClientName], [CustomData], [Exception], [ExceptionMessage], [ExecutionDuration], [ExecutionTime], [ImpersonatorTenantId], [ImpersonatorUserId], [MethodName], [Parameters], [ReturnValue], [ServiceName], [TenantId], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AbpAuditLogs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+INFO  2023-10-04 12:04:25,801 [4    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2023-10-04 12:04:25,806 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:25,809 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:25,809 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'First Name' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:25,809 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Last Name' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:25,902 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:25,904 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:04:25,908 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:25,910 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+WARN  2023-10-04 12:04:25,912 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:25,912 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:25,912 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:25,922 [4    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 211.7723ms.
+INFO  2023-10-04 12:04:25,922 [4    ] c.Infrastructure.ControllerActionInvoker - Executed action AbpBookApp.Web.Controllers.AuthorsController.Index (AbpBookApp.Web.Mvc) in 256.5539ms
+INFO  2023-10-04 12:04:25,922 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'AbpBookApp.Web.Controllers.AuthorsController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:04:25,926 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/Authors - - - 200 - text/html;+charset=utf-8 270.0483ms
+DEBUG 2023-10-04 12:04:25,931 [14   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: _uBzDXY6y1bkroP3KYlErQ
+INFO  2023-10-04 12:04:25,931 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2023-10-04 12:04:25,931 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET https://localhost:44312/signalr?id=_uBzDXY6y1bkroP3KYlErQ - - - 101 - - 12564.4233ms
+INFO  2023-10-04 12:04:25,937 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320178419756568 - -
+INFO  2023-10-04 12:04:25,937 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320178419756568 - -
+INFO  2023-10-04 12:04:25,950 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_vs/browserLink - -
+INFO  2023-10-04 12:04:25,950 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - -
+INFO  2023-10-04 12:04:25,950 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:25,950 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - - - 200 12368 application/javascript;+charset=utf-8 0.8042ms
+INFO  2023-10-04 12:04:25,951 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2023-10-04 12:04:25,952 [16   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2023-10-04 12:04:25,953 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:25,953 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 2.0165ms
+INFO  2023-10-04 12:04:25,953 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:25,953 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2023-10-04 12:04:25,953 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320178419756568 - - - 200 16016 application/x-javascript 16.6668ms
+WARN  2023-10-04 12:04:25,956 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:25,956 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:25,956 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:25,960 [14   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2023-10-04 12:04:25,961 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 7.605ms
+INFO  2023-10-04 12:04:25,961 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:25,961 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320178419756568 - - - 200 23784 application/x-javascript;+charset=utf-8 24.5715ms
+INFO  2023-10-04 12:04:25,973 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.6590ms
+INFO  2023-10-04 12:04:25,991 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:04:25,993 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:04:25,993 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:04:25,993 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 2.3033ms
+INFO  2023-10-04 12:04:26,003 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=r0R2mpIz2a74A_zVvK9RuA - -
+INFO  2023-10-04 12:04:26,005 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:04:26,015 [14   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"r0R2mpIz2a74A_zVvK9RuA","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:04:26.0154353+03:00","Properties":{}}
+DEBUG 2023-10-04 12:04:26,016 [14   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: r0R2mpIz2a74A_zVvK9RuA
+INFO  2023-10-04 12:04:26,650 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/Categories - -
+INFO  2023-10-04 12:04:26,653 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:04:26,655 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Categories", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Index(AbpBookApp.Categories.Dto.PagedCategoryResultRequestDto) on controller AbpBookApp.Web.Controllers.CategoriesController (AbpBookApp.Web.Mvc).
+INFO  2023-10-04 12:04:26,657 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:26,659 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:04:26,660 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[CategoryName], [c].[CreationTime], [c].[CreatorUserId], [c].[DeleterUserId], [c].[DeletionTime], [c].[IsDeleted], [c].[LastModificationTime], [c].[LastModifierUserId]
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+ORDER BY [c].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+INFO  2023-10-04 12:04:26,661 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:26,663 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 512), @p1='?' (Size = 64), @p2='?' (Size = 128), @p3='?' (Size = 2000), @p4='?' (Size = 2000), @p5='?' (Size = 1024), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (DbType = Int64), @p10='?' (Size = 256), @p11='?' (Size = 1024), @p12='?' (Size = 4000), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AbpAuditLogs] ([BrowserInfo], [ClientIpAddress], [ClientName], [CustomData], [Exception], [ExceptionMessage], [ExecutionDuration], [ExecutionTime], [ImpersonatorTenantId], [ImpersonatorUserId], [MethodName], [Parameters], [ReturnValue], [ServiceName], [TenantId], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AbpAuditLogs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+INFO  2023-10-04 12:04:26,664 [16   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2023-10-04 12:04:26,664 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,664 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,664 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Category Name' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,665 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'CreateNewBook' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,665 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'CategoryName' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:26,667 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:26,668 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:04:26,670 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:26,670 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+WARN  2023-10-04 12:04:26,673 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,673 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,673 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:26,679 [25   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 15.1746ms.
+INFO  2023-10-04 12:04:26,679 [25   ] c.Infrastructure.ControllerActionInvoker - Executed action AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc) in 24.0378ms
+INFO  2023-10-04 12:04:26,679 [25   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:04:26,682 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/Categories - - - 200 - text/html;+charset=utf-8 31.2302ms
+DEBUG 2023-10-04 12:04:26,684 [4    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: r0R2mpIz2a74A_zVvK9RuA
+INFO  2023-10-04 12:04:26,684 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2023-10-04 12:04:26,685 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET https://localhost:44312/signalr?id=r0R2mpIz2a74A_zVvK9RuA - - - 101 - - 681.8937ms
+INFO  2023-10-04 12:04:26,690 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320178419756568 - -
+INFO  2023-10-04 12:04:26,690 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320178419756568 - -
+INFO  2023-10-04 12:04:26,692 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:26,693 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:26,693 [4    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2023-10-04 12:04:26,693 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - -
+INFO  2023-10-04 12:04:26,693 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_vs/browserLink - -
+INFO  2023-10-04 12:04:26,693 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2023-10-04 12:04:26,694 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - - - 200 12368 application/javascript;+charset=utf-8 0.8323ms
+INFO  2023-10-04 12:04:26,694 [4    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2023-10-04 12:04:26,695 [4    ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 1.6631ms
+INFO  2023-10-04 12:04:26,695 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:26,695 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320178419756568 - - - 200 16016 application/x-javascript 4.4573ms
+WARN  2023-10-04 12:04:26,698 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,698 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:26,698 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:26,703 [14   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2023-10-04 12:04:26,704 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 10.7454ms
+INFO  2023-10-04 12:04:26,704 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:26,705 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320178419756568 - - - 200 23784 application/x-javascript;+charset=utf-8 14.1996ms
+INFO  2023-10-04 12:04:26,713 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.7356ms
+INFO  2023-10-04 12:04:26,732 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:04:26,735 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:04:26,736 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:04:26,736 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 3.8203ms
+INFO  2023-10-04 12:04:26,742 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=KHzFOEto_7mrsLV3oidsKQ - -
+INFO  2023-10-04 12:04:26,743 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:04:26,754 [14   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"KHzFOEto_7mrsLV3oidsKQ","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:04:26.7546605+03:00","Properties":{}}
+DEBUG 2023-10-04 12:04:26,755 [14   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: KHzFOEto_7mrsLV3oidsKQ
+INFO  2023-10-04 12:04:27,062 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:27,065 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:27,809 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/Categories - -
+INFO  2023-10-04 12:04:27,811 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:04:27,813 [4    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Categories", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Index(AbpBookApp.Categories.Dto.PagedCategoryResultRequestDto) on controller AbpBookApp.Web.Controllers.CategoriesController (AbpBookApp.Web.Mvc).
+INFO  2023-10-04 12:04:27,815 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:27,816 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:04:27,818 [14   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[CategoryName], [c].[CreationTime], [c].[CreatorUserId], [c].[DeleterUserId], [c].[DeletionTime], [c].[IsDeleted], [c].[LastModificationTime], [c].[LastModifierUserId]
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+ORDER BY [c].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+INFO  2023-10-04 12:04:27,819 [14   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:27,821 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 512), @p1='?' (Size = 64), @p2='?' (Size = 128), @p3='?' (Size = 2000), @p4='?' (Size = 2000), @p5='?' (Size = 1024), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (DbType = Int64), @p10='?' (Size = 256), @p11='?' (Size = 1024), @p12='?' (Size = 4000), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AbpAuditLogs] ([BrowserInfo], [ClientIpAddress], [ClientName], [CustomData], [Exception], [ExceptionMessage], [ExecutionDuration], [ExecutionTime], [ImpersonatorTenantId], [ImpersonatorUserId], [MethodName], [Parameters], [ReturnValue], [ServiceName], [TenantId], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AbpAuditLogs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+INFO  2023-10-04 12:04:27,822 [18   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2023-10-04 12:04:27,822 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,823 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,823 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Category Name' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,823 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'CreateNewBook' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,823 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'CategoryName' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:27,825 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:27,827 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:04:27,828 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:27,829 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+WARN  2023-10-04 12:04:27,831 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,831 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,831 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:27,836 [25   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 13.8199ms.
+INFO  2023-10-04 12:04:27,836 [25   ] c.Infrastructure.ControllerActionInvoker - Executed action AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc) in 23.2726ms
+INFO  2023-10-04 12:04:27,836 [25   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:04:27,840 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/Categories - - - 200 - text/html;+charset=utf-8 30.2391ms
+DEBUG 2023-10-04 12:04:27,842 [14   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: KHzFOEto_7mrsLV3oidsKQ
+INFO  2023-10-04 12:04:27,842 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2023-10-04 12:04:27,843 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET https://localhost:44312/signalr?id=KHzFOEto_7mrsLV3oidsKQ - - - 101 - - 1100.8925ms
+INFO  2023-10-04 12:04:27,847 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320178419756568 - -
+INFO  2023-10-04 12:04:27,847 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320178419756568 - -
+INFO  2023-10-04 12:04:27,849 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:27,849 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:27,850 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2023-10-04 12:04:27,850 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2023-10-04 12:04:27,851 [14   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2023-10-04 12:04:27,852 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 1.7242ms
+INFO  2023-10-04 12:04:27,852 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:27,852 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320178419756568 - - - 200 16016 application/x-javascript 4.4391ms
+INFO  2023-10-04 12:04:27,853 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - -
+INFO  2023-10-04 12:04:27,853 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_vs/browserLink - -
+INFO  2023-10-04 12:04:27,854 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - - - 200 12368 application/javascript;+charset=utf-8 0.8857ms
+WARN  2023-10-04 12:04:27,854 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,854 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:04:27,854 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:04:27,860 [16   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2023-10-04 12:04:27,861 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 10.6691ms
+INFO  2023-10-04 12:04:27,861 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:04:27,861 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320178419756568 - - - 200 23784 application/x-javascript;+charset=utf-8 13.5303ms
+INFO  2023-10-04 12:04:27,880 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 26.5602ms
+INFO  2023-10-04 12:04:27,889 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:04:27,891 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:04:27,891 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:04:27,891 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 1.9471ms
+INFO  2023-10-04 12:04:27,897 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=hCxi1tVvEwQ82THhqbSolw - -
+INFO  2023-10-04 12:04:27,899 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:04:27,911 [16   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"hCxi1tVvEwQ82THhqbSolw","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:04:27.9115417+03:00","Properties":{}}
+DEBUG 2023-10-04 12:04:27,911 [16   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: hCxi1tVvEwQ82THhqbSolw
+INFO  2023-10-04 12:04:32,067 [26   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:32,069 [26   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:37,085 [26   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:37,086 [26   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:42,093 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:42,094 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:47,107 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:47,108 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:52,116 [26   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:52,117 [26   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:04:57,138 [26   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:04:57,139 [26   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:05:02,154 [26   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:02,155 [26   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:05:07,163 [26   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:07,164 [26   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:05:12,184 [9    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:12,187 [9    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+DEBUG 2023-10-04 12:05:22,150 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2023-10-04 12:05:22,161 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2023-10-04 12:05:22,172 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AbpBookApp.Web.Startup.AbpBookAppWebMvcModule, AbpBookApp.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,173 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AbpBookApp.AbpBookAppWebCoreModule, AbpBookApp.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,173 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AbpBookApp.AbpBookAppApplicationModule, AbpBookApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,173 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AbpBookApp.AbpBookAppCoreModule, AbpBookApp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,173 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,173 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,174 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,174 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,174 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AbpBookApp.EntityFrameworkCore.AbpBookAppEntityFrameworkModule, AbpBookApp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,174 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,174 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,174 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,175 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,175 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,175 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,177 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2023-10-04 12:05:22,210 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2023-10-04 12:05:22,210 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2023-10-04 12:05:22,210 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpBookApp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2023-10-04 12:05:22,210 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2023-10-04 12:05:22,505 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: AbpBookApp.EntityFrameworkCore.AbpBookAppDbContext, AbpBookApp.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2023-10-04 12:05:22,705 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2023-10-04 12:05:22,777 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2023-10-04 12:05:22,843 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2023-10-04 12:05:22,866 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpBookApp
+DEBUG 2023-10-04 12:05:22,900 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2023-10-04 12:05:22,909 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2023-10-04 12:05:22,912 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[AbpBookApp.MultiTenancy.Tenant, AbpBookApp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[AbpBookApp.Authorization.Users.User, AbpBookApp.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2023-10-04 12:05:22,951 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 19 classes define auto mapping attributes
+DEBUG 2023-10-04 12:05:22,951 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2023-10-04 12:05:22,957 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Users.Dto.CreateUserDto
+DEBUG 2023-10-04 12:05:22,958 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Users.Dto.UserDto
+DEBUG 2023-10-04 12:05:22,958 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Universities.Dto.UniversityDto
+DEBUG 2023-10-04 12:05:22,958 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2023-10-04 12:05:22,958 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Sessions.Dto.UserLoginInfoDto
+DEBUG 2023-10-04 12:05:22,958 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Roles.Dto.PermissionDto
+DEBUG 2023-10-04 12:05:22,958 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2023-10-04 12:05:22,960 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.MultiTenancy.Dto.TenantDto
+DEBUG 2023-10-04 12:05:22,960 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Categories.Dto.CategoryDto
+DEBUG 2023-10-04 12:05:22,960 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Categories.Dto.CreateCategoryDto
+DEBUG 2023-10-04 12:05:22,960 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Books.Dto.BookDto
+DEBUG 2023-10-04 12:05:22,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Books.Dto.CreateBookDto
+DEBUG 2023-10-04 12:05:22,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Authors.Dto.AuthorDto
+DEBUG 2023-10-04 12:05:22,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Authors.Dto.CreateAuthorDto
+DEBUG 2023-10-04 12:05:22,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Adresses.Dto.AddressDto
+DEBUG 2023-10-04 12:05:22,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Adresses.Dto.CreateAddressDto
+DEBUG 2023-10-04 12:05:22,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2023-10-04 12:05:22,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AbpBookApp.Web.Models.Roles.EditRoleModalViewModel
+WARN  2023-10-04 12:05:24,129 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+WARN  2023-10-04 12:05:24,194 [1    ] oft.EntityFrameworkCore.Model.Validation - No store type was specified for the decimal property 'Price' on entity type 'Book'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+INFO  2023-10-04 12:05:24,345 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:24,710 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[DisplayName], [a].[IsDeleted], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name]
+FROM [AbpEditions] AS [a]
+WHERE [a].[Name] = N'Standard'
+INFO  2023-10-04 12:05:24,804 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (17ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,809 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,810 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,811 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,811 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,811 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,812 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,812 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,813 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,813 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,813 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,814 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,814 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__language_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpLanguages] AS [a]
+        WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = @__language_Name_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,822 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Description], [a].[DisplayName], [a].[IsDefault], [a].[IsDeleted], [a].[IsStatic], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[NormalizedName], [a].[TenantId]
+FROM [AbpRoles] AS [a]
+WHERE ([a].[TenantId] IS NULL) AND ([a].[Name] = N'Admin')
+INFO  2023-10-04 12:05:24,870 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__adminRoleForHost_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Name]
+FROM [AbpPermissions] AS [a]
+WHERE ([a].[Discriminator] = N'RolePermissionSetting') AND (([a].[TenantId] IS NULL) AND ([a].[RoleId] = @__adminRoleForHost_Id_0))
+INFO  2023-10-04 12:05:24,880 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE ([a].[TenantId] IS NULL) AND ([a].[UserName] = N'admin')
+INFO  2023-10-04 12:05:24,958 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__name_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpSettings] AS [a]
+        WHERE (([a].[Name] = @__name_0) AND ([a].[TenantId] IS NULL)) AND ([a].[UserId] IS NULL)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,959 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__name_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpSettings] AS [a]
+        WHERE (([a].[Name] = @__name_0) AND ([a].[TenantId] IS NULL)) AND ([a].[UserId] IS NULL)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:24,959 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__name_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AbpSettings] AS [a]
+        WHERE (([a].[Name] = @__name_0) AND ([a].[TenantId] IS NULL)) AND ([a].[UserId] IS NULL)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+INFO  2023-10-04 12:05:25,006 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConnectionString], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EditionId], [a].[IsActive], [a].[IsDeleted], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[TenancyName]
+FROM [AbpTenants] AS [a]
+WHERE [a].[TenancyName] = N'Default'
+INFO  2023-10-04 12:05:25,031 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@___tenantId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Description], [a].[DisplayName], [a].[IsDefault], [a].[IsDeleted], [a].[IsStatic], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[NormalizedName], [a].[TenantId]
+FROM [AbpRoles] AS [a]
+WHERE ([a].[TenantId] = @___tenantId_0) AND ([a].[Name] = N'Admin')
+INFO  2023-10-04 12:05:25,035 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@___tenantId_0='?' (DbType = Int32), @__adminRole_Id_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Name]
+FROM [AbpPermissions] AS [a]
+WHERE ([a].[Discriminator] = N'RolePermissionSetting') AND (([a].[TenantId] = @___tenantId_0) AND ([a].[RoleId] = @__adminRole_Id_1))
+INFO  2023-10-04 12:05:25,043 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@___tenantId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE ([a].[TenantId] = @___tenantId_0) AND ([a].[UserName] = N'admin')
+INFO  2023-10-04 12:05:25,075 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:25,089 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[DisplayName], [a].[Icon], [a].[IsDeleted], [a].[IsDisabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[TenantId]
+FROM [AbpLanguages] AS [a]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))
+INFO  2023-10-04 12:05:25,162 [1    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:25,175 [1    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[TenantId], [a].[UserId], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)) AND (([a].[UserId] IS NULL) AND ([a].[TenantId] IS NULL))
+INFO  2023-10-04 12:05:25,198 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2023-10-04 12:05:25,445 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2023-10-04 12:05:25,445 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2023-10-04 12:05:25,445 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\fato\Desktop\AbpBookApp\src\AbpBookApp.Web.Mvc
+INFO  2023-10-04 12:05:25,457 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:05:25,457 [6    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/Categories - -
+INFO  2023-10-04 12:05:25,527 [6    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:25,527 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:25,545 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:25,547 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 90.9825ms
+INFO  2023-10-04 12:05:25,550 [6    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Categories", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Index(AbpBookApp.Categories.Dto.PagedCategoryResultRequestDto) on controller AbpBookApp.Web.Controllers.CategoriesController (AbpBookApp.Web.Mvc).
+INFO  2023-10-04 12:05:25,551 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=4oQ6iiEG3LHqrOUH1VizBQ - -
+INFO  2023-10-04 12:05:25,560 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:05:25,636 [7    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"4oQ6iiEG3LHqrOUH1VizBQ","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:05:25.5826892+03:00","Properties":{}}
+INFO  2023-10-04 12:05:25,650 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:25,683 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (10ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:05:25,713 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[CategoryName], [c].[CreationTime], [c].[CreatorUserId], [c].[DeleterUserId], [c].[DeletionTime], [c].[IsDeleted], [c].[LastModificationTime], [c].[LastModifierUserId]
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+ORDER BY [c].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+INFO  2023-10-04 12:05:25,776 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:25,910 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 512), @p1='?' (Size = 64), @p2='?' (Size = 128), @p3='?' (Size = 2000), @p4='?' (Size = 2000), @p5='?' (Size = 1024), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (DbType = Int64), @p10='?' (Size = 256), @p11='?' (Size = 1024), @p12='?' (Size = 4000), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AbpAuditLogs] ([BrowserInfo], [ClientIpAddress], [ClientName], [CustomData], [Exception], [ExceptionMessage], [ExecutionDuration], [ExecutionTime], [ImpersonatorTenantId], [ImpersonatorUserId], [MethodName], [Parameters], [ReturnValue], [ServiceName], [TenantId], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AbpAuditLogs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+INFO  2023-10-04 12:05:27,926 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:27,934 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:05:28,894 [16   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2023-10-04 12:05:28,927 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:28,933 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @___sourceName_0='?' (Size = 128), @__CultureInfo_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[Key], [a].[LanguageName], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Source], [a].[TenantId], [a].[Value]
+FROM [AbpLanguageTexts] AS [a]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)) AND (([a].[Source] = @___sourceName_0) AND ([a].[LanguageName] = @__CultureInfo_Name_1))
+WARN  2023-10-04 12:05:28,935 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:28,951 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:29,090 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Category Name' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:29,229 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'CreateNewBook' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:29,401 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'CategoryName' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:30,419 [16   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:30,435 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:05:30,918 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:30,925 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:05:31,044 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:31,046 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @___sourceName_0='?' (Size = 128), @__CultureInfo_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[Key], [a].[LanguageName], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Source], [a].[TenantId], [a].[Value]
+FROM [AbpLanguageTexts] AS [a]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)) AND (([a].[Source] = @___sourceName_0) AND ([a].[LanguageName] = @__CultureInfo_Name_1))
+WARN  2023-10-04 12:05:31,052 [6    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:31,052 [6    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:31,052 [6    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:31,069 [6    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:31,071 [14   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:05:31,101 [6    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@__ef_filter__p_2='?' (DbType = Boolean), @__ef_filter__p_3='?' (DbType = Boolean), @__ef_filter__p_0='?' (DbType = Boolean), @__user_Id_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Name]
+FROM [AbpUserRoles] AS [a]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[Name]
+    FROM [AbpRoles] AS [a0]
+    WHERE ((@__ef_filter__p_2 = CAST(1 AS bit)) OR ([a0].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_3 = CAST(1 AS bit)) OR ([a0].[TenantId] IS NULL))
+) AS [t] ON [a].[RoleId] = [t].[Id]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)) AND ([a].[UserId] = @__user_Id_0)
+INFO  2023-10-04 12:05:31,114 [14   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (5ms) [Parameters=[@__ef_filter__p_3='?' (DbType = Boolean), @__ef_filter__p_4='?' (DbType = Boolean), @__ef_filter__p_6='?' (DbType = Boolean), @__ef_filter__p_7='?' (DbType = Boolean), @__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__user_Id_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[Name]
+FROM [AbpUserOrganizationUnits] AS [a]
+INNER JOIN (
+    SELECT [a0].[OrganizationUnitId], [a0].[RoleId]
+    FROM [AbpOrganizationUnitRoles] AS [a0]
+    WHERE ((@__ef_filter__p_3 = CAST(1 AS bit)) OR ([a0].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_4 = CAST(1 AS bit)) OR ([a0].[TenantId] IS NULL))
+) AS [t] ON [a].[OrganizationUnitId] = [t].[OrganizationUnitId]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[Name]
+    FROM [AbpRoles] AS [a1]
+    WHERE ((@__ef_filter__p_6 = CAST(1 AS bit)) OR ([a1].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_7 = CAST(1 AS bit)) OR ([a1].[TenantId] IS NULL))
+) AS [t0] ON [t].[RoleId] = [t0].[Id]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[UserId] = @__user_Id_0)
+INFO  2023-10-04 12:05:31,129 [14   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__normalizedName_0='?' (Size = 32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Description], [a].[DisplayName], [a].[IsDefault], [a].[IsDeleted], [a].[IsStatic], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[NormalizedName], [a].[TenantId]
+FROM [AbpRoles] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[NormalizedName] = @__normalizedName_0)
+INFO  2023-10-04 12:05:31,141 [14   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__userId_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[Discriminator], [a].[IsGranted], [a].[Name], [a].[TenantId], [a].[UserId]
+FROM [AbpPermissions] AS [a]
+WHERE (([a].[Discriminator] = N'UserPermissionSetting') AND ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[UserId] = @__userId_0)
+INFO  2023-10-04 12:05:31,158 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Description], [a].[DisplayName], [a].[IsDefault], [a].[IsDeleted], [a].[IsStatic], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[NormalizedName], [a].[TenantId]
+FROM [AbpRoles] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:05:31,169 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__roleId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[Discriminator], [a].[IsGranted], [a].[Name], [a].[TenantId], [a].[RoleId]
+FROM [AbpPermissions] AS [a]
+WHERE (([a].[Discriminator] = N'RolePermissionSetting') AND ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[RoleId] = @__roleId_0)
+INFO  2023-10-04 12:05:32,118 [22   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 6166.8709ms.
+INFO  2023-10-04 12:05:32,119 [22   ] c.Infrastructure.ControllerActionInvoker - Executed action AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc) in 6569.0038ms
+INFO  2023-10-04 12:05:32,119 [22   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:32,133 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/Categories - - - 200 - text/html;+charset=utf-8 6677.2053ms
+DEBUG 2023-10-04 12:05:32,140 [6    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: 4oQ6iiEG3LHqrOUH1VizBQ
+INFO  2023-10-04 12:05:32,142 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - -
+INFO  2023-10-04 12:05:32,144 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - -
+INFO  2023-10-04 12:05:32,146 [6    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2023-10-04 12:05:32,146 [6    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET https://localhost:44312/signalr?id=4oQ6iiEG3LHqrOUH1VizBQ - - - 101 - - 6594.9864ms
+INFO  2023-10-04 12:05:32,147 [6    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_vs/browserLink - -
+INFO  2023-10-04 12:05:32,147 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - -
+INFO  2023-10-04 12:05:32,148 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:32,149 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:32,150 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - - - 200 12368 application/javascript;+charset=utf-8 2.8458ms
+INFO  2023-10-04 12:05:32,151 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:32,153 [7    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:32,168 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:32,173 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (3ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @___sourceName_0='?' (Size = 128), @__CultureInfo_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[Key], [a].[LanguageName], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Source], [a].[TenantId], [a].[Value]
+FROM [AbpLanguageTexts] AS [a]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)) AND (([a].[Source] = @___sourceName_0) AND ([a].[LanguageName] = @__CultureInfo_Name_1))
+INFO  2023-10-04 12:05:32,175 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @___sourceName_0='?' (Size = 128), @__CultureInfo_Name_1='?' (Size = 128)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[Key], [a].[LanguageName], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Source], [a].[TenantId], [a].[Value]
+FROM [AbpLanguageTexts] AS [a]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)) AND (([a].[Source] = @___sourceName_0) AND ([a].[LanguageName] = @__CultureInfo_Name_1))
+INFO  2023-10-04 12:05:32,186 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.9698ms
+WARN  2023-10-04 12:05:32,194 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:32,194 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:32,194 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:32,208 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:05:32,210 [18   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2023-10-04 12:05:32,211 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 59.7358ms
+INFO  2023-10-04 12:05:32,211 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:32,211 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - - - 200 16016 application/x-javascript 69.7467ms
+INFO  2023-10-04 12:05:32,213 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:32,214 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:32,214 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 5.9054ms
+INFO  2023-10-04 12:05:32,218 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=cIO6Jvf5zGjJYcSjGeH84A - -
+INFO  2023-10-04 12:05:32,222 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:05:32,226 [18   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"cIO6Jvf5zGjJYcSjGeH84A","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:05:32.2263393+03:00","Properties":{}}
+DEBUG 2023-10-04 12:05:32,229 [18   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: cIO6Jvf5zGjJYcSjGeH84A
+INFO  2023-10-04 12:05:32,232 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__userId_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Name], [a].[TenantId], [a].[UserId], [a].[Value]
+FROM [AbpSettings] AS [a]
+WHERE ((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL)) AND (([a].[UserId] = @__userId_0) AND ([a].[TenantId] IS NULL))
+INFO  2023-10-04 12:05:32,242 [18   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2023-10-04 12:05:32,243 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 90.1815ms
+INFO  2023-10-04 12:05:32,243 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:32,243 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - - - 200 23784 application/x-javascript;+charset=utf-8 99.0115ms
+INFO  2023-10-04 12:05:32,956 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:32,959 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
+INFO  2023-10-04 12:05:33,880 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/Authors - -
+INFO  2023-10-04 12:05:33,884 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'AbpBookApp.Web.Controllers.AuthorsController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:33,887 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Authors", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Index(AbpBookApp.Authors.Dto.PagedAuthorResultRequestDto) on controller AbpBookApp.Web.Controllers.AuthorsController (AbpBookApp.Web.Mvc).
+INFO  2023-10-04 12:05:33,892 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:33,897 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Authors] AS [a]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:05:33,903 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Firstname], [a].[IsDeleted], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Lastname]
+FROM [Authors] AS [a]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))
+ORDER BY [a].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+INFO  2023-10-04 12:05:33,929 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:33,933 [14   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 512), @p1='?' (Size = 64), @p2='?' (Size = 128), @p3='?' (Size = 2000), @p4='?' (Size = 2000), @p5='?' (Size = 1024), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (DbType = Int64), @p10='?' (Size = 256), @p11='?' (Size = 1024), @p12='?' (Size = 4000), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AbpAuditLogs] ([BrowserInfo], [ClientIpAddress], [ClientName], [CustomData], [Exception], [ExceptionMessage], [ExecutionDuration], [ExecutionTime], [ImpersonatorTenantId], [ImpersonatorUserId], [MethodName], [Parameters], [ReturnValue], [ServiceName], [TenantId], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AbpAuditLogs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+INFO  2023-10-04 12:05:34,027 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2023-10-04 12:05:34,031 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:34,034 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:34,035 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'First Name' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:34,035 [14   ] naries.DictionaryBasedLocalizationSource - Can not find 'Last Name' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:34,173 [14   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:34,175 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:05:34,178 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:34,179 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+WARN  2023-10-04 12:05:34,182 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:34,182 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:34,182 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:34,192 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 257.1194ms.
+INFO  2023-10-04 12:05:34,192 [7    ] c.Infrastructure.ControllerActionInvoker - Executed action AbpBookApp.Web.Controllers.AuthorsController.Index (AbpBookApp.Web.Mvc) in 304.9074ms
+INFO  2023-10-04 12:05:34,192 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'AbpBookApp.Web.Controllers.AuthorsController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:34,195 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/Authors - - - 200 - text/html;+charset=utf-8 315.2944ms
+DEBUG 2023-10-04 12:05:34,198 [14   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: cIO6Jvf5zGjJYcSjGeH84A
+INFO  2023-10-04 12:05:34,198 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2023-10-04 12:05:34,199 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET https://localhost:44312/signalr?id=cIO6Jvf5zGjJYcSjGeH84A - - - 101 - - 1980.5306ms
+INFO  2023-10-04 12:05:34,206 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - -
+INFO  2023-10-04 12:05:34,206 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - -
+INFO  2023-10-04 12:05:34,208 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:34,208 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:34,209 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:34,209 [4    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:34,211 [14   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2023-10-04 12:05:34,211 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_vs/browserLink - -
+INFO  2023-10-04 12:05:34,211 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - -
+INFO  2023-10-04 12:05:34,211 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 2.1389ms
+INFO  2023-10-04 12:05:34,211 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:34,212 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - - - 200 16016 application/x-javascript 5.9451ms
+INFO  2023-10-04 12:05:34,212 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - - - 200 12368 application/javascript;+charset=utf-8 1.1920ms
+WARN  2023-10-04 12:05:34,216 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:34,217 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:34,217 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:34,222 [4    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2023-10-04 12:05:34,223 [4    ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 13.9608ms
+INFO  2023-10-04 12:05:34,224 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:34,224 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - - - 200 23784 application/x-javascript;+charset=utf-8 18.2314ms
+INFO  2023-10-04 12:05:34,238 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 27.5416ms
+INFO  2023-10-04 12:05:34,261 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:05:34,263 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:34,263 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:34,263 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 2.4765ms
+INFO  2023-10-04 12:05:34,275 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=AMZ-zWsZHDCbYEN2cZHNUQ - -
+INFO  2023-10-04 12:05:34,278 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:05:34,288 [4    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"AMZ-zWsZHDCbYEN2cZHNUQ","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:05:34.2879419+03:00","Properties":{}}
+DEBUG 2023-10-04 12:05:34,288 [4    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: AMZ-zWsZHDCbYEN2cZHNUQ
+INFO  2023-10-04 12:05:35,090 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/Books - -
+INFO  2023-10-04 12:05:35,094 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'AbpBookApp.Web.Controllers.BooksController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:35,098 [4    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Books", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Index(AbpBookApp.Books.Dto.PagedBookResultRequestDto) on controller AbpBookApp.Web.Controllers.BooksController (AbpBookApp.Web.Mvc).
+INFO  2023-10-04 12:05:35,102 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:35,111 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Books] AS [b]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([b].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:05:35,138 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__ef_filter__p_1='?' (DbType = Boolean), @__ef_filter__p_2='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[AuthorId], [t].[CategoryId], [t].[CreationTime], [t].[CreatorUserId], [t].[DeleterUserId], [t].[DeletionTime], [t].[Description], [t].[ISBN], [t].[ImagePath], [t].[IsDeleted], [t].[LastModificationTime], [t].[LastModifierUserId], [t].[Name], [t].[PageCount], [t].[Price], [t].[PublishDate], [t0].[Id], [t0].[CreationTime], [t0].[CreatorUserId], [t0].[DeleterUserId], [t0].[DeletionTime], [t0].[Firstname], [t0].[IsDeleted], [t0].[LastModificationTime], [t0].[LastModifierUserId], [t0].[Lastname], [t1].[Id], [t1].[CategoryName], [t1].[CreationTime], [t1].[CreatorUserId], [t1].[DeleterUserId], [t1].[DeletionTime], [t1].[IsDeleted], [t1].[LastModificationTime], [t1].[LastModifierUserId]
+FROM (
+    SELECT [b].[Id], [b].[AuthorId], [b].[CategoryId], [b].[CreationTime], [b].[CreatorUserId], [b].[DeleterUserId], [b].[DeletionTime], [b].[Description], [b].[ISBN], [b].[ImagePath], [b].[IsDeleted], [b].[LastModificationTime], [b].[LastModifierUserId], [b].[Name], [b].[PageCount], [b].[Price], [b].[PublishDate]
+    FROM [Books] AS [b]
+    WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([b].[IsDeleted] = CAST(0 AS bit))
+    ORDER BY [b].[Id] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN (
+    SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Firstname], [a].[IsDeleted], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Lastname]
+    FROM [Authors] AS [a]
+    WHERE (@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))
+) AS [t0] ON [t].[AuthorId] = [t0].[Id]
+INNER JOIN (
+    SELECT [c].[Id], [c].[CategoryName], [c].[CreationTime], [c].[CreatorUserId], [c].[DeleterUserId], [c].[DeletionTime], [c].[IsDeleted], [c].[LastModificationTime], [c].[LastModifierUserId]
+    FROM [Categories] AS [c]
+    WHERE (@__ef_filter__p_2 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+) AS [t1] ON [t].[CategoryId] = [t1].[Id]
+ORDER BY [t].[Id] DESC
+INFO  2023-10-04 12:05:35,168 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[Firstname], [a].[IsDeleted], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[Lastname]
+FROM [Authors] AS [a]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:05:35,181 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[CategoryName], [c].[CreationTime], [c].[CreatorUserId], [c].[DeleterUserId], [c].[DeletionTime], [c].[IsDeleted], [c].[LastModificationTime], [c].[LastModifierUserId]
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:05:35,194 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:35,197 [7    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 512), @p1='?' (Size = 64), @p2='?' (Size = 128), @p3='?' (Size = 2000), @p4='?' (Size = 2000), @p5='?' (Size = 1024), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (DbType = Int64), @p10='?' (Size = 256), @p11='?' (Size = 1024), @p12='?' (Size = 4000), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AbpAuditLogs] ([BrowserInfo], [ClientIpAddress], [ClientName], [CustomData], [Exception], [ExceptionMessage], [ExecutionDuration], [ExecutionTime], [ImpersonatorTenantId], [ImpersonatorUserId], [MethodName], [Parameters], [ReturnValue], [ServiceName], [TenantId], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AbpAuditLogs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+INFO  2023-10-04 12:05:35,304 [7    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2023-10-04 12:05:35,311 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,314 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,315 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Author' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,315 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Category' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,315 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Ppage Count' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,315 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Price' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,315 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'ISBN' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,315 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Publih Date' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,315 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'Description' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,483 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'CreateNewBook' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,492 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'BookName' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,499 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'ISBN' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,500 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'description' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,517 [7    ] naries.DictionaryBasedLocalizationSource - Can not find 'PublishDate' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:35,525 [7    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:35,527 [14   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:05:35,530 [14   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:35,532 [16   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+WARN  2023-10-04 12:05:35,535 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,535 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,535 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:35,545 [9    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 346.7209ms.
+INFO  2023-10-04 12:05:35,545 [9    ] c.Infrastructure.ControllerActionInvoker - Executed action AbpBookApp.Web.Controllers.BooksController.Index (AbpBookApp.Web.Mvc) in 446.6153ms
+INFO  2023-10-04 12:05:35,545 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'AbpBookApp.Web.Controllers.BooksController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:35,549 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/Books - - - 200 - text/html;+charset=utf-8 458.9931ms
+DEBUG 2023-10-04 12:05:35,553 [7    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: AMZ-zWsZHDCbYEN2cZHNUQ
+INFO  2023-10-04 12:05:35,553 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2023-10-04 12:05:35,553 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET https://localhost:44312/signalr?id=AMZ-zWsZHDCbYEN2cZHNUQ - - - 101 - - 1277.8376ms
+INFO  2023-10-04 12:05:35,561 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/img/d5a21fa4-a2ca-471c-8d72-c5a99d507e34.jpeg - -
+INFO  2023-10-04 12:05:35,563 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/img/4e0f71ef-9bff-418b-8adc-ee15e0723e42.png - -
+INFO  2023-10-04 12:05:35,565 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /img/d5a21fa4-a2ca-471c-8d72-c5a99d507e34.jpeg was not modified
+INFO  2023-10-04 12:05:35,565 [4    ] NetCore.StaticFiles.StaticFileMiddleware - The file /img/4e0f71ef-9bff-418b-8adc-ee15e0723e42.png was not modified
+INFO  2023-10-04 12:05:35,566 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/img/4e0f71ef-9bff-418b-8adc-ee15e0723e42.png - - - 304 - image/png 3.4966ms
+INFO  2023-10-04 12:05:35,566 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/img/d5a21fa4-a2ca-471c-8d72-c5a99d507e34.jpeg - - - 304 - image/jpeg 5.4003ms
+INFO  2023-10-04 12:05:35,569 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - -
+INFO  2023-10-04 12:05:35,570 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - -
+INFO  2023-10-04 12:05:35,570 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - - - 200 12368 application/javascript;+charset=utf-8 0.9785ms
+INFO  2023-10-04 12:05:35,570 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - -
+INFO  2023-10-04 12:05:35,570 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/img/string - -
+INFO  2023-10-04 12:05:35,570 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_vs/browserLink - -
+INFO  2023-10-04 12:05:35,571 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/img/ - -
+INFO  2023-10-04 12:05:35,573 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:35,573 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:35,574 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/img/string - - - 404 - - 4.0624ms
+INFO  2023-10-04 12:05:35,574 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/img/ - - - 404 - - 2.9886ms
+INFO  2023-10-04 12:05:35,574 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:35,575 [4    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:35,577 [4    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+WARN  2023-10-04 12:05:35,578 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:35,578 [4    ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 2.7769ms
+INFO  2023-10-04 12:05:35,578 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+WARN  2023-10-04 12:05:35,578 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:35,579 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:35,579 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - - - 200 16016 application/x-javascript 9.0179ms
+INFO  2023-10-04 12:05:35,584 [16   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2023-10-04 12:05:35,585 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 11.315ms
+INFO  2023-10-04 12:05:35,585 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:35,585 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - - - 200 23784 application/x-javascript;+charset=utf-8 15.6214ms
+INFO  2023-10-04 12:05:35,609 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.3304ms
+INFO  2023-10-04 12:05:35,664 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:05:35,666 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:35,668 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:35,669 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 4.6421ms
+INFO  2023-10-04 12:05:35,675 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=WdJaNl4h1zRnTMowC8gCvw - -
+INFO  2023-10-04 12:05:35,678 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:05:35,697 [16   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"WdJaNl4h1zRnTMowC8gCvw","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:05:35.6971063+03:00","Properties":{}}
+DEBUG 2023-10-04 12:05:35,697 [16   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: WdJaNl4h1zRnTMowC8gCvw
+INFO  2023-10-04 12:05:36,115 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/Categories - -
+INFO  2023-10-04 12:05:36,118 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:36,119 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Categories", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Index(AbpBookApp.Categories.Dto.PagedCategoryResultRequestDto) on controller AbpBookApp.Web.Controllers.CategoriesController (AbpBookApp.Web.Mvc).
+INFO  2023-10-04 12:05:36,120 [17   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:36,123 [17   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+INFO  2023-10-04 12:05:36,125 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[CategoryName], [c].[CreationTime], [c].[CreatorUserId], [c].[DeleterUserId], [c].[DeletionTime], [c].[IsDeleted], [c].[LastModificationTime], [c].[LastModifierUserId]
+FROM [Categories] AS [c]
+WHERE (@__ef_filter__p_0 = CAST(1 AS bit)) OR ([c].[IsDeleted] = CAST(0 AS bit))
+ORDER BY [c].[Id] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+INFO  2023-10-04 12:05:36,126 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:36,129 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 512), @p1='?' (Size = 64), @p2='?' (Size = 128), @p3='?' (Size = 2000), @p4='?' (Size = 2000), @p5='?' (Size = 1024), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (DbType = Int64), @p10='?' (Size = 256), @p11='?' (Size = 1024), @p12='?' (Size = 4000), @p13='?' (Size = 256), @p14='?' (DbType = Int32), @p15='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AbpAuditLogs] ([BrowserInfo], [ClientIpAddress], [ClientName], [CustomData], [Exception], [ExceptionMessage], [ExecutionDuration], [ExecutionTime], [ImpersonatorTenantId], [ImpersonatorUserId], [MethodName], [Parameters], [ReturnValue], [ServiceName], [TenantId], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AbpAuditLogs]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+INFO  2023-10-04 12:05:36,130 [4    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+WARN  2023-10-04 12:05:36,130 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,130 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,130 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Category Name' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,131 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'CreateNewBook' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,131 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'CategoryName' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:36,133 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:36,135 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (1ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+INFO  2023-10-04 12:05:36,137 [4    ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:36,138 [4    ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (0ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__p_0='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[AuthenticationSource], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorUserId], [a].[DeleterUserId], [a].[DeletionTime], [a].[EmailAddress], [a].[EmailConfirmationCode], [a].[IsActive], [a].[IsDeleted], [a].[IsEmailConfirmed], [a].[IsLockoutEnabled], [a].[IsPhoneNumberConfirmed], [a].[IsTwoFactorEnabled], [a].[LastModificationTime], [a].[LastModifierUserId], [a].[LockoutEndDateUtc], [a].[Name], [a].[NormalizedEmailAddress], [a].[NormalizedUserName], [a].[Password], [a].[PasswordResetCode], [a].[PhoneNumber], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[Id] = @__p_0)
+WARN  2023-10-04 12:05:36,142 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,142 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,142 [4    ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:36,149 [9    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 19.2925ms.
+INFO  2023-10-04 12:05:36,149 [9    ] c.Infrastructure.ControllerActionInvoker - Executed action AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc) in 30.209ms
+INFO  2023-10-04 12:05:36,149 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'AbpBookApp.Web.Controllers.CategoriesController.Index (AbpBookApp.Web.Mvc)'
+INFO  2023-10-04 12:05:36,152 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/Categories - - - 200 - text/html;+charset=utf-8 37.3913ms
+DEBUG 2023-10-04 12:05:36,155 [18   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: WdJaNl4h1zRnTMowC8gCvw
+INFO  2023-10-04 12:05:36,155 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2023-10-04 12:05:36,156 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/1.1 GET https://localhost:44312/signalr?id=WdJaNl4h1zRnTMowC8gCvw - - - 101 - - 480.4568ms
+INFO  2023-10-04 12:05:36,162 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - -
+INFO  2023-10-04 12:05:36,162 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - -
+INFO  2023-10-04 12:05:36,165 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:36,165 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:36,165 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:36,165 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2023-10-04 12:05:36,167 [16   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2023-10-04 12:05:36,168 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 2.7926ms
+INFO  2023-10-04 12:05:36,168 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:36,169 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpServiceProxies/GetAll?v=638320179229131787 - - - 200 16016 application/x-javascript 6.1337ms
+INFO  2023-10-04 12:05:36,170 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - -
+INFO  2023-10-04 12:05:36,170 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44312/_vs/browserLink - -
+INFO  2023-10-04 12:05:36,171 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_framework/aspnetcore-browser-refresh.js - - - 200 12368 application/javascript;+charset=utf-8 1.0354ms
+WARN  2023-10-04 12:05:36,172 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Books' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,172 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Authors' in localization source 'AbpBookApp'!
+WARN  2023-10-04 12:05:36,172 [18   ] naries.DictionaryBasedLocalizationSource - Can not find 'Categories' in localization source 'AbpBookApp'!
+INFO  2023-10-04 12:05:36,178 [18   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2023-10-04 12:05:36,180 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 14.1135ms
+INFO  2023-10-04 12:05:36,180 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2023-10-04 12:05:36,180 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/AbpScripts/GetScripts?v=638320179229131787 - - - 200 23784 application/x-javascript;+charset=utf-8 17.5884ms
+INFO  2023-10-04 12:05:36,204 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44312/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 33.9061ms
+INFO  2023-10-04 12:05:36,223 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2023-10-04 12:05:36,225 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:36,226 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2023-10-04 12:05:36,226 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44312/signalr/negotiate text/plain;charset=UTF-8 0 - 200 273 application/json 3.5088ms
+INFO  2023-10-04 12:05:36,240 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET https://localhost:44312/signalr?id=y3UEolktTyX3P4iCdTgD6A - -
+INFO  2023-10-04 12:05:36,243 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2023-10-04 12:05:36,255 [4    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"y3UEolktTyX3P4iCdTgD6A","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2023-10-04T12:05:36.2557505+03:00","Properties":{}}
+DEBUG 2023-10-04 12:05:36,256 [4    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: y3UEolktTyX3P4iCdTgD6A
+INFO  2023-10-04 12:05:37,966 [18   ] osoft.EntityFrameworkCore.Infrastructure - Entity Framework Core 6.0.4 initialized 'AbpBookAppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.4' with options: None
+INFO  2023-10-04 12:05:37,972 [18   ] oft.EntityFrameworkCore.Database.Command - Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__Now_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(@__p_1) [a].[Id], [a].[CreationTime], [a].[CreatorUserId], [a].[IsAbandoned], [a].[JobArgs], [a].[JobType], [a].[LastTryTime], [a].[NextTryTime], [a].[Priority], [a].[TryCount]
+FROM [AbpBackgroundJobs] AS [a]
+WHERE ([a].[IsAbandoned] = CAST(0 AS bit)) AND ([a].[NextTryTime] <= @__Now_0)
+ORDER BY [a].[Priority] DESC, [a].[TryCount], [a].[NextTryTime]
