@@ -12,6 +12,7 @@ namespace AbpBookApp.Books
 {
     public interface IBookAppService : IAsyncCrudAppService<BookDto, int, PagedBookResultRequestDto, CreateBookDto, BookDto>
     {
+        Task DeleteBookId(int Id);
         List<BookDto> GetAllBooksAsync();
     }
 }

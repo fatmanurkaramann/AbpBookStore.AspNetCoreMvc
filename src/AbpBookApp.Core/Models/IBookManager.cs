@@ -13,5 +13,6 @@ namespace AbpBookApp.Models
         Task<Book> CreateAsync(Book entity);
         Task<Book> Update(Book entity);
         Task<Book> GetByIdAsync(int id);
+        Task Delete(int Id);
     }
 }

@@ -17,8 +17,6 @@ namespace AbpBookApp.Books
         {
             _bookManager = bookManager;
         }
-
-
         public override async Task<BookDto> CreateAsync(CreateBookDto input)
         {
             var book = new Book
@@ -36,7 +34,11 @@ namespace AbpBookApp.Books
             await _bookManager.CreateAsync(book);
             return MapToEntityDto(book);
         }
-       
+        public async Task DeleteBookId(int Id)
+        {
+             await _bookManager.Delete(Id);
+        }
+
         public List<BookDto> GetAllBooksAsync()
         {
             var books = _bookManager.GetAll();
@@ -52,7 +54,7 @@ namespace AbpBookApp.Books
             return MapToEntityDto(book);
         }
 
-
+     
         protected override IQueryable<Book> CreateFilteredQuery(PagedBookResultRequestDto input)
         {
             var query = Repository.GetAllIncluding(x => x.Author, async => async.Category);

@@ -16,7 +16,11 @@ namespace AbpBookApp.Models
         {
             this._bookRepository = bookRepository;
         }
-
+        public async Task Delete(int Id)
+        {
+            var entity =await _bookRepository.GetAsync(Id);
+          await _bookRepository.DeleteAsync(entity);
+        }
         public async Task<Book> CreateAsync(Book entity)
         {
             return await _bookRepository.InsertAsync(entity);

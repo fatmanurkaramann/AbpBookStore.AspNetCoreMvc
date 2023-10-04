@@ -7,62 +7,63 @@
 }
 
 @model Task<PagedResultDto<BookDto>>
-        
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h1>@L("Books")</h1>
-                </div>
-                <div class="col-sm-6">
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>@L("Books")</h1>
+            </div>
+            <div class="col-sm-6">
                 <a href="javascript:;" data-toggle="modal" data-target="#BookCreateModal" class="btn bg-blue float-sm-right">
-                        <i class="fa fa-plus-square"></i>
-                        @L("Create")
-                    </a>
-                </div>
+                    <i class="fa fa-plus-square"></i>
+                    @L("Create")
+                </a>
             </div>
         </div>
-    </section>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <!--Use for bulk actions-->
-                                </div>
-                                <div class="col-md-6">
-                                    @await Html.PartialAsync("~/Views/Tenants/Index.AdvancedSearch.cshtml")
-                                </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!--Use for bulk actions-->
+                            </div>
+                            <div class="col-md-6">
+                                @await Html.PartialAsync("~/Views/Tenants/Index.AdvancedSearch.cshtml")
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="TenantsTable" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>@L("Name")</th>
-                                            <th>@L("Author")</th>
-                                            <th>@L("Category")</th>
-                                            <th>@L("Ppage Count")</th>
-                                            <th>@L("Price")</th>
-                                            <th>@L("ISBN")</th>
-                                            <th>@L("Publih Date")</th>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="TenantsTable" class="table table-striped table-bordered"
+                                   style="position: static; zoom: 1;">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th> @L("Name")</th>
+                                        <th >@L("Author")</th>
+                                        <th>@L("Category")</th>
+                                        <th>@L("page Count")</th>
+                                        <th>@L("Price")</th>
+                                        <th>@L("ISBN")</th>
+                                        <th>@L("Publih Date")</th>
 
-                                            <th>@L("Description")</th>
-                                            <th style="width: 150px">@L("Actions")</th>
-                                        </tr>
-                                    </thead>
+                                        <th>@L("Description")</th>
+                                        <th style="width: 150px">@L("Actions")</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     @foreach (var item in Model.Result.Items.ToList())
                                     {
-                                        <tr>
+                                        <tr class="odd">
                                             <td>
                                                 <div class="d-flex justify-content-center" style=" height: 100px;">
-                                                        <img src="/img/@(item.ImagePath)" style="max-width: 100px; max-height: 100px;">
+                                                    <img src="/img/@(item.ImagePath)" style="max-width: 100px; max-height: 100px;">
                                                 </div>
                                             </td>
                                             <td>@item.Name</td>
@@ -74,37 +75,37 @@
                                             <td>@item.PublishDate</td>
                                             <td>@item.Description</td>
                                             <td>
-                                                <div class="dropdown">
-                                                    <div  aria-labelledby="dropdownMenuButton">
-                                                        <a asp-action="GetUpdatePage" type="button" class="dropdown-item"
-                                                       asp-route-id="@item.Id" asp-controller="book" asp-action="updateBook">
-                                                            Edit
-                                                        </a>
-                                                        <a asp-action="Remove" type="button" class="dropdown-item"
-                                                       asp-route-id="@item.Id" asp-controller="book">
-                                                            Delete
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                                <button type="button" class="btn btn-sm bg-secondary edit-tenant" 
+                                                data-tenant-id="5" data-toggle="modal" 
+                                                data-target="#TenantEditModal">
+                                                    <i class="fas fa-pencil-alt"></i> Edit
+                                                </button>
+                                                <form asp-controller="Books" asp-action="Remove" method="post" asp-route-id="@item.Id">
+                     <input type="hidden" name="inputID" value="@item.Id" />
+                  <button type="submit" class="btn btn-sm bg-danger delete-tenant">
+                    <i class="fas fa-trash"></i> Delete
+               </button>
+                    </form>
+
                                             </td>
                                         </tr>
 
                                     }
                                 </tbody>
-                                </table>
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 @await Html.PartialAsync("~/Views/Books/_CreateModal.cshtml", new AbpBookApp.Books.Dto.CreateBookDto())
 
-    <div class="modal fade" id="TenantEditModal" tabindex="-1" role="dialog" aria-labelledby="TenantEditModalLabel" data-backdrop="static">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-            </div>
+<div class="modal fade" id="TenantEditModal" tabindex="-1" role="dialog" aria-labelledby="TenantEditModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
         </div>
     </div>
+</div>

@@ -50,6 +50,12 @@ namespace AbpBookApp.Web.Controllers
 
         }
         [HttpPost]
+        public async Task<IActionResult> Remove(int inputID)
+        {
+            await _bookAppService.DeleteBookId(inputID);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
         public async Task<ActionResult> CreateModal(CreateBookDto input, IFormFile imageFile)
         {
             if (ModelState.IsValid)
