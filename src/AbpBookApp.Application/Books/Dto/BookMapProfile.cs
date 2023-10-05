@@ -14,6 +14,8 @@ namespace AbpBookApp.Books.Dto
         {
             CreateMap<Book, BookDto>().ReverseMap();
             CreateMap<Book, CreateBookDto>().ReverseMap();
+            CreateMap<Book, BookUpdateDto>().ReverseMap();
+
         }
     }
 }

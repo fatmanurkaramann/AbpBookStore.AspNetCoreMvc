@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AbpBookApp.Books
 {
-    public interface IBookAppService : IAsyncCrudAppService<BookDto, int, PagedBookResultRequestDto, CreateBookDto, BookDto>
+    public interface IBookAppService : IAsyncCrudAppService<BookDto, int, PagedBookResultRequestDto,CreateBookDto,BookUpdateDto>
     {
         Task DeleteBookId(int Id);
         List<BookDto> GetAllBooksAsync();

@@ -1,0 +1,91 @@
+﻿@using AbpBookApp.Books.Dto
+@using AbpBookApp.Web.Models.Common.Modals
+@using AbpBookApp.Web.Startup
+@model AbpBookApp.Books.Dto.BookDto
+
+@{
+    ViewData["Title"] = "Edit";
+    ViewBag.CurrentPageName = PageNames.Book;
+    var categories = ViewBag.Categories;
+}
+@await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditTenant")))
+<div class="container-fluid">
+    <form name="TenantEditForm" role="form" class="form-horizontal">
+        <input value="@Model.Id" asp-for="Id" name="Id" />
+        <div class="modal-body">
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="tenancy-name">@L("TenancyName")</label>
+                <div class="col-md-9">
+                    <input id="tenancy-name" asp-for="Name" type="text" class="form-control" name="TenancyName" value="@Model.Name" required maxlength="64" minlength="2">
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">ISBN</label>
+                <div class="col-md-9">
+                <input type="text" class="form-control" asp-for="ISBN" />
+                </div>
+            </div>
+            <div class="form-group row required">
+                <input type="hidden" asp-for="ImagePath" />
+                <label class="col-md-3 col-form-label" for="form6Example1">Image</label>
+                <div class="col-md-9">
+                    <input type="file" name="imageFile" accept="image/*" id="imageInput">
+                    <img src="/img/@(Model.ImagePath)" id="previewImage" alt="Book Image" style="max-width: 200px; max-height: 200px;" />
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">Description</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="Description" />
+                </div>
+            </div>
+          
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">Author Firstname</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="Author.Firstname" />
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">Author Lastname</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" asp-for="Author.Lastname" />
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">Category</label>
+                <div class="col-md-9">
+                    <select class="form-control" asp-for="Category.Id">
+                        <option value="">Select a category</option>
+                        @foreach (var category in categories)
+                        {
+                            <option value="@category.Id">@category.CategoryName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">Page Count</label>
+                <div class="col-md-9">
+                    <input type="number" class="form-control" asp-for="PageCount" />
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">Price</label>
+                <div class="col-md-9">
+                    <input type="number" class="form-control" asp-for="Price" />
+                </div>
+            </div>
+            <div class="form-group row required">
+                <label class="col-md-3 col-form-label" for="form6Example1">Publish Date</label>
+                <div class="col-md-9">
+                    <input type="date" class="form-control" asp-for="PublishDate" />
+                </div>
+            </div>
+        </div>
+        @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+    </form>
+
+</div>
+
+<script src="~/view-resources/Views/Tenants/_EditModal.js" asp-append-version="true"></script>

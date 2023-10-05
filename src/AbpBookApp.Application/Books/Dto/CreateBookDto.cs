@@ -12,6 +12,7 @@ namespace AbpBookApp.Books.Dto
     [AutoMapFrom(typeof(Book))]
     public class CreateBookDto
     {
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

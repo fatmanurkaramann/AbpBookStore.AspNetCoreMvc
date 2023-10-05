@@ -46,7 +46,7 @@
                                     <tr>
                                         <th></th>
                                         <th> @L("Name")</th>
-                                        <th >@L("Author")</th>
+                                        <th>@L("Author")</th>
                                         <th>@L("Category")</th>
                                         <th>@L("page Count")</th>
                                         <th>@L("Price")</th>
@@ -75,17 +75,22 @@
                                             <td>@item.PublishDate</td>
                                             <td>@item.Description</td>
                                             <td>
-                                                <button type="button" class="btn btn-sm bg-secondary edit-tenant" 
-                                                data-tenant-id="5" data-toggle="modal" 
-                                                data-target="#TenantEditModal">
+
+                                                <a  class="btn btn-sm bg-secondary edit-tenant"
+                                               data-toggle="modal" 
+                                               data-target="#BookEditModal" asp-route-id="@item.Id" asp-controller="Books" asp-action="EditModal">
                                                     <i class="fas fa-pencil-alt"></i> Edit
-                                                </button>
+                                                </a>
+                                                <a asp-action="Edit" type="button" 
+                          asp-route-id="@item.Id" asp-controller="Books" >
+                                      Edit
+                                    </a>
                                                 <form asp-controller="Books" asp-action="Remove" method="post" asp-route-id="@item.Id">
-                     <input type="hidden" name="inputID" value="@item.Id" />
-                  <button type="submit" class="btn btn-sm bg-danger delete-tenant">
-                    <i class="fas fa-trash"></i> Delete
-               </button>
-                    </form>
+                                                    <input type="hidden" name="inputID" value="@item.Id" />
+                                                    <button type="submit" class="btn btn-sm bg-danger delete-tenant">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </button>
+                                                </form>
 
                                             </td>
                                         </tr>
@@ -103,9 +108,4 @@
 
 @await Html.PartialAsync("~/Views/Books/_CreateModal.cshtml", new AbpBookApp.Books.Dto.CreateBookDto())
 
-<div class="modal fade" id="TenantEditModal" tabindex="-1" role="dialog" aria-labelledby="TenantEditModalLabel" data-backdrop="static">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-        </div>
-    </div>
-</div>
+

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using AbpBookApp.Authors;
 using System.Linq;
 using AbpBookApp.Categories;
+using Abp.Application.Services.Dto;
 
 namespace AbpBookApp.Web.Controllers
 {
@@ -37,6 +38,13 @@ namespace AbpBookApp.Web.Controllers
             ViewBag.Categories = categories;
 
             return View(Task.FromResult(books));
+        }
+        public async Task<ActionResult> Edit(int Id)
+        {
+            var categories = _categoryAppService.GetAllCategories();
+            ViewBag.Categories = categories;
+            var bookDto = await _bookAppService.GetAsync(new EntityDto(Id));
+            return View(bookDto);
         }
         public IActionResult _CreateModal()
         {
