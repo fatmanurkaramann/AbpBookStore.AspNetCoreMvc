@@ -28,6 +28,18 @@
                         </div>
                     </div>
                     <div class="form-group row required">
+                        <label asp-for="Price" class="col-md-3 col-form-label">@L("Price")</label>
+                        <div class="col-md-9">
+                            <input asp-for="Price" type="number" name="Price" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row required">
+                        <label asp-for="PageCount" class="col-md-3 col-form-label">@L("Page Count")</label>
+                        <div class="col-md-9">
+                            <input asp-for="PageCount" type="number" name="PageCount" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row required">
                         <label asp-for="Description" class="col-md-3 col-form-label">@L("description")</label>
                         <div class="col-md-9">
                             <input asp-for="Description" type="text" name="description" class="form-control" required>

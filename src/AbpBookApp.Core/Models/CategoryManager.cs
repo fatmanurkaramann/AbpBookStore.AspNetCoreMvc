@@ -17,9 +17,19 @@ namespace AbpBookApp.Models
             _repository = repository;
         }
 
+        public Task<Category> CreateAsync(Category category)
+        {
+            return _repository.InsertAsync(category);
+        }
+
         public List<Category> GetAll()
         {
            return _repository.GetAllList();
+        }
+        public async Task Delete(int Id)
+        {
+            var category = await _repository.GetAsync(Id);
+            await _repository.DeleteAsync(category);
         }
     }
 }

@@ -46,14 +46,12 @@
                                     <tr>
                                         <th></th>
                                         <th> @L("Name")</th>
-                                        <th>@L("Author")</th>
-                                        <th>@L("Category")</th>
-                                        <th>@L("page Count")</th>
-                                        <th>@L("Price")</th>
-                                        <th>@L("ISBN")</th>
-                                        <th>@L("Publih Date")</th>
-
-                                        <th>@L("Description")</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>page Count</th>
+                                        <th>Price</th>
+                                        <th>ISBN</th>
+                                        <th>Publih Date</th>
                                         <th style="width: 150px">@L("Actions")</th>
                                     </tr>
                                 </thead>
@@ -73,26 +71,22 @@
                                             <td>@item.Price</td>
                                             <td>@item.ISBN.ToUpper()</td>
                                             <td>@item.PublishDate</td>
-                                            <td>@item.Description</td>
                                             <td>
+                                                <div style="display: flex; gap: 10px;">
+                                                    <a class="btn btn-sm bg-secondary" asp-action="Edit" type="button"
+                                                   asp-route-id="@item.Id" asp-controller="Books" asp-action="UpdateBook">
+                                                        <i class="fas fa-pencil-alt"></i> Edit
+                                                    </a>
 
-                                                <a  class="btn btn-sm bg-secondary edit-tenant"
-                                               data-toggle="modal" 
-                                               data-target="#BookEditModal" asp-route-id="@item.Id" asp-controller="Books" asp-action="EditModal">
-                                                    <i class="fas fa-pencil-alt"></i> Edit
-                                                </a>
-                                                <a asp-action="Edit" type="button" 
-                          asp-route-id="@item.Id" asp-controller="Books" >
-                                      Edit
-                                    </a>
-                                                <form asp-controller="Books" asp-action="Remove" method="post" asp-route-id="@item.Id">
-                                                    <input type="hidden" name="inputID" value="@item.Id" />
-                                                    <button type="submit" class="btn btn-sm bg-danger delete-tenant">
-                                                        <i class="fas fa-trash"></i> Delete
-                                                    </button>
-                                                </form>
-
+                                                    <form asp-controller="Books" asp-action="Remove" method="post" asp-route-id="@item.Id">
+                                                        <input type="hidden" name="inputID" value="@item.Id" />
+                                                        <button type="submit" class="btn btn-sm bg-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
+
                                         </tr>
 
                                     }

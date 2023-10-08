@@ -1,16 +1,16 @@
 ﻿@using AbpBookApp.Books.Dto
 @using AbpBookApp.Web.Models.Common.Modals
 @using AbpBookApp.Web.Startup
-@model AbpBookApp.Books.Dto.BookDto
+@model AbpBookApp.Books.Dto.BookUpdateDto
 
 @{
     ViewData["Title"] = "Edit";
     ViewBag.CurrentPageName = PageNames.Book;
     var categories = ViewBag.Categories;
 }
-@await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditTenant")))
 <div class="container-fluid">
-    <form name="TenantEditForm" role="form" class="form-horizontal">
+    @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditBook")))
+    <form role="form" class="form-horizontal" asp-controller="Books" asp-action="UpdateBook" method="post" enctype="multipart/form-data">
         <input value="@Model.Id" asp-for="Id" name="Id" />
         <div class="modal-body">
             <div class="form-group row required">
@@ -22,7 +22,7 @@
             <div class="form-group row required">
                 <label class="col-md-3 col-form-label" for="form6Example1">ISBN</label>
                 <div class="col-md-9">
-                <input type="text" class="form-control" asp-for="ISBN" />
+                    <input type="text" class="form-control" asp-for="ISBN" />
                 </div>
             </div>
             <div class="form-group row required">
@@ -39,7 +39,7 @@
                     <input type="text" class="form-control" asp-for="Description" />
                 </div>
             </div>
-          
+            <input asp-for="Author.Id" />
             <div class="form-group row required">
                 <label class="col-md-3 col-form-label" for="form6Example1">Author Firstname</label>
                 <div class="col-md-9">
@@ -55,7 +55,7 @@
             <div class="form-group row required">
                 <label class="col-md-3 col-form-label" for="form6Example1">Category</label>
                 <div class="col-md-9">
-                    <select class="form-control" asp-for="Category.Id">
+                    <select class="form-control" asp-for="CategoryId">
                         <option value="">Select a category</option>
                         @foreach (var category in categories)
                         {
@@ -88,4 +88,3 @@
 
 </div>
 
-<script src="~/view-resources/Views/Tenants/_EditModal.js" asp-append-version="true"></script>

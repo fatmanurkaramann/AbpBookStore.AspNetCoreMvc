@@ -15,11 +15,21 @@ namespace AbpBookApp.Web.Controllers
         {
             _categoryAppService = categoryAppService;
         }
-
+        [HttpPost]
+        public async Task<IActionResult> Remove(int inputID)
+        {
+            await _categoryAppService.DeleteCategoryId(inputID);
+            return RedirectToAction("Index");
+        }
         public async Task<ActionResult> Index(PagedCategoryResultRequestDto input)
         {
             var categories = await _categoryAppService.GetAllAsync(input);
             return View(Task.FromResult(categories));
+        }
+        public async Task<ActionResult> CreateModal(CreateCategoryDto categoryDto)
+        {
+           await _categoryAppService.CreateAsync(categoryDto);
+            return RedirectToAction("Index");
         }
     }
 }

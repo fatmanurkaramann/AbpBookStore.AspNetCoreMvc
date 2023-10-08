@@ -44,19 +44,22 @@ namespace AbpBookApp.Web.Controllers
             var categories = _categoryAppService.GetAllCategories();
             ViewBag.Categories = categories;
             var bookDto = await _bookAppService.GetAsync(new EntityDto(Id));
-            return View(bookDto);
+            var updateDto = new BookUpdateDto
+            {
+                Author = bookDto.Author,
+                CategoryId = bookDto.Category.Id,
+                Description = bookDto.Description,
+                Id = bookDto.Id,
+                ImagePath = bookDto.ImagePath,
+                ISBN = bookDto.ISBN,
+                Name = bookDto.Name,
+                PageCount = bookDto.PageCount,
+                Price = bookDto.Price,
+                PublishDate = bookDto.PublishDate
+            };
+            return View(updateDto);
         }
-        public IActionResult _CreateModal()
-        {
-            var authors = _authorAppService.GetAllAuthors();
-
-            var categories = _categoryAppService.GetAllCategories();
-            ViewBag.Authors = authors;
-            ViewBag.Categories = categories;
-
-            return View();
-
-        }
+     
         [HttpPost]
         public async Task<IActionResult> Remove(int inputID)
         {
@@ -94,6 +97,57 @@ namespace AbpBookApp.Web.Controllers
                 ViewBag.Categories = categories;
                 return View("Index");
             }
+
         }
+        [HttpPost]
+        public async Task<ActionResult> UpdateBook(BookUpdateDto book, IFormFile imageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (imageFile != null && imageFile.Length > 0)
+                    {
+                        var root = _fileProvider.GetDirectoryContents("wwwroot");
+                        var images = root.First(x => x.Name == "img");
+
+                        var randomImageName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
+
+                        var path = Path.Combine(images.PhysicalPath, randomImageName);
+
+                        using (var stream = new FileStream(path, FileMode.Create))
+                            await imageFile.CopyToAsync(stream);
+
+                        book.ImagePath = randomImageName;
+                    }
+                    else
+                    {
+                        // If imageFile is null, keep the existing ImagePath value.
+                        var existingBook = await _bookAppService.GetAsync(new EntityDto(book.Id));
+                        if (existingBook != null)
+                        {
+                            book.ImagePath = existingBook.ImagePath;
+                        }
+                    }
+
+                    await _bookAppService.UpdateAsync(book);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    // Handle exceptions here, log them, and return an appropriate response.
+                    ModelState.AddModelError(string.Empty, "An error occurred while updating the book.");
+                    // Optionally log the exception
+                    // _logger.LogError(ex, "An error occurred while updating the book.");
+                }
+            }
+
+            // If ModelState is not valid, return to the update page with validation errors.
+            var categories = _categoryAppService.GetAllCategories();
+            ViewBag.Categories = categories;
+            return View("GetUpdatePage", book);
+        }
+
+
     }
 }

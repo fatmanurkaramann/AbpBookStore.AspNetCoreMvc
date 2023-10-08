@@ -14,7 +14,7 @@
                 <h1>@L("Authors")</h1>
             </div>
             <div class="col-sm-6">
-                <a href="javascript:;" data-toggle="modal" data-target="#TenantCreateModal" class="btn bg-blue float-sm-right">
+                <a href="javascript:;" data-toggle="modal" data-target="#AuthorCreateModal" class="btn bg-blue float-sm-right">
                     <i class="fa fa-plus-square"></i>
                     @L("Create")
                 </a>
@@ -55,17 +55,18 @@
                                             <td>@item.Firstname</td>
                                             <td>@item.Lastname</td>
                                             <td>
-                                                <div class="dropdown">
-                                                    <div aria-labelledby="dropdownMenuButton">
-                                                        <a asp-action="GetUpdatePage" type="button" class="dropdown-item"
-                                                       asp-route-id="@item.Id" asp-controller="book" asp-action="updateBook">
-                                                            Edit
-                                                        </a>
-                                                        <a asp-action="Remove" type="button" class="dropdown-item"
-                                                       asp-route-id="@item.Id" asp-controller="book">
-                                                            Delete
-                                                        </a>
-                                                    </div>
+                                                <div style="display: flex; gap: 10px;">
+                                                    <a class="btn btn-sm bg-secondary" asp-action="Edit" type="button"
+                                                   asp-route-id="@item.Id" asp-controller="Authors" asp-action="UpdateAuthors">
+                                                        <i class="fas fa-pencil-alt"></i> Edit
+                                                    </a>
+
+                                                    <form asp-controller="Authors" asp-action="Remove" method="post" asp-route-id="@item.Id">
+                                                        <input type="hidden" name="inputID" value="@item.Id" />
+                                                        <button type="submit" class="btn btn-sm bg-danger">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -81,7 +82,7 @@
     </div>
 </section>
 
-@await Html.PartialAsync("~/Views/Tenants/_CreateModal.cshtml")
+@await Html.PartialAsync("~/Views/Authors/_CreateModal.cshtml", new AbpBookApp.Authors.Dto.CreateAuthorDto())
 
 <div class="modal fade" id="TenantEditModal" tabindex="-1" role="dialog" aria-labelledby="TenantEditModalLabel" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">

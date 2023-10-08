@@ -18,21 +18,12 @@ namespace AbpBookApp.Books.Dto
         public string Name { get; set; }
         [Required]
         public string ISBN { get; set; }
-        [Required]
         public decimal Price { get; set; }
-        [Required]
         public int PageCount { get; set; }
-        [Required]
         public string ImagePath { get; set; }
-        [Required]
         public DateTime PublishDate { get; set; }
-        [Required]
-
         public string Description { get; set; }
-        [Required]
-
         public AuthorDto Author { get; set; }
-        [Required]
 
         public int CategoryId { get; set; }
     }

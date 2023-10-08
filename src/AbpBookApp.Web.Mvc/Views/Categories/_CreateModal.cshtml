@@ -1,14 +1,17 @@
 ﻿@using Abp.MultiTenancy
+@using AbpBookApp.Categories.Dto
 @using AbpBookApp.MultiTenancy
 @using AbpBookApp.Web.Models.Common.Modals
 @{
     Layout = null;
 }
+@model CreateCategoryDto
 <div class="modal fade" id="CategoryCreateModal" tabindex="-1" role="dialog" aria-labelledby="CategoryCreateModalLabel" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewBook")))
-            <form name="tenantCreateForm" role="form" class="form-horizontal">
+            <form role="form" class="form-horizontal" asp-controller="Categories" 
+            asp-action="CreateModal" method="post">
                 <div class="modal-body">
                     <div class="form-group row required">
                         <label class="col-md-3 col-form-label">@L("CategoryName")</label>

@@ -45,7 +45,6 @@ namespace AbpBookApp.Books
             var bookDtos = ObjectMapper.Map<List<BookDto>>(books);
             return bookDtos;
         }
-
         public override async Task<BookDto> UpdateAsync(BookUpdateDto input)
         {
             var book = await _bookManager.GetByIdAsync(input.Id);

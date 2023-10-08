@@ -12,5 +12,6 @@ namespace AbpBookApp.Authors
     public interface IAuthorAppService : IAsyncCrudAppService<AuthorDto, int, PagedAuthorResultRequestDto, CreateAuthorDto, AuthorDto>
     {
         List<AuthorDto> GetAllAuthors();
+        Task DeleteAuthor(int Id);
     }
 }

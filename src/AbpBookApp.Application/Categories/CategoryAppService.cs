@@ -20,12 +20,22 @@ namespace AbpBookApp.Categories
             _categoryManager = categoryManager;
         }
 
-       
+        public override async Task<CategoryDto> CreateAsync(CreateCategoryDto input)
+        {
+            var category =ObjectMapper.Map<Category>(input);
+            await _categoryManager.CreateAsync(category);
+            return MapToEntityDto(category);
+        }
         public  List<CategoryDto> GetAllCategories()
         {
             var categories = _categoryManager.GetAll();
             var categoryDtos = ObjectMapper.Map<List<CategoryDto>>(categories);
             return categoryDtos;
         }
+        public async Task DeleteCategoryId(int Id)
+        {
+            await _categoryManager.Delete(Id);
+        }
+
     }
 }

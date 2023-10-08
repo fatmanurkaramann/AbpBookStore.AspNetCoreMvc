@@ -10,5 +10,7 @@ namespace AbpBookApp.Models
     public interface ICategoryManager:IDomainService
     {
         List<Category> GetAll();
+        Task Delete(int Id);
+        Task<Category> CreateAsync(Category category);
     }
 }

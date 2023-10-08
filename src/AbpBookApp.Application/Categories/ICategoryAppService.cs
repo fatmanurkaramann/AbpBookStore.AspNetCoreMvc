@@ -12,5 +12,6 @@ namespace AbpBookApp.Categories
     public interface ICategoryAppService : IAsyncCrudAppService<CategoryDto, int, PagedCategoryResultRequestDto, CreateCategoryDto, CategoryDto>
     {
       List<CategoryDto> GetAllCategories();
+      Task DeleteCategoryId(int Id);
     }
 }
