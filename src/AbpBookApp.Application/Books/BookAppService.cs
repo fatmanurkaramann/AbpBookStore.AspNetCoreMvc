@@ -53,7 +53,7 @@ namespace AbpBookApp.Books
             return MapToEntityDto(book);
         }
 
-     
+
         protected override IQueryable<Book> CreateFilteredQuery(PagedBookResultRequestDto input)
         {
             var query = Repository.GetAllIncluding(x => x.Author, async => async.Category);

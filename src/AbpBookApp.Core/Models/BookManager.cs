@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace AbpBookApp.Models
 
         public async Task<Book> GetByIdAsync(int id)
         {
-            return await _bookRepository.GetAsync(id);
+            return await _bookRepository.GetAll().Include(a => a.Author).FirstOrDefaultAsync(x=>x.Id==id);
         }
 
         public async Task<Book> Update(Book entity)

@@ -16,7 +16,7 @@
             <div class="form-group row required">
                 <label class="col-md-3 col-form-label" for="tenancy-name">@L("TenancyName")</label>
                 <div class="col-md-9">
-                    <input id="tenancy-name" asp-for="Name" type="text" class="form-control" name="TenancyName" value="@Model.Name" required maxlength="64" minlength="2">
+                    <input id="tenancy-name" asp-for="Name" type="text" class="form-control" name="Name" value="@Model.Name" required maxlength="64" minlength="2">
                 </div>
             </div>
             <div class="form-group row required">
@@ -39,7 +39,7 @@
                     <input type="text" class="form-control" asp-for="Description" />
                 </div>
             </div>
-            <input asp-for="Author.Id" />
+            <input type="text" asp-for="Author.Id" />
             <div class="form-group row required">
                 <label class="col-md-3 col-form-label" for="form6Example1">Author Firstname</label>
                 <div class="col-md-9">

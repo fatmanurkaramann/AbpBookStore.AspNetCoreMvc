@@ -12,22 +12,25 @@ using AbpBookApp.Authors;
 using System.Linq;
 using AbpBookApp.Categories;
 using Abp.Application.Services.Dto;
+using AbpBookApp.Authors.Dto;
 
 namespace AbpBookApp.Web.Controllers
 {
     public class BooksController: AbpBookAppControllerBase
     {
         private readonly IBookAppService _bookAppService;
+        private readonly IBookManager _bookManager;
         private readonly IAuthorAppService _authorAppService;
         private readonly ICategoryAppService _categoryAppService;
 
         private readonly IFileProvider _fileProvider;
-        public BooksController(IBookAppService bookAppService, IAuthorAppService authorAppService, IFileProvider fileProvider, ICategoryAppService categoryAppService)
+        public BooksController(IBookAppService bookAppService, IAuthorAppService authorAppService, IFileProvider fileProvider, ICategoryAppService categoryAppService, IBookManager bookManager)
         {
             _bookAppService = bookAppService;
             _authorAppService = authorAppService;
             _fileProvider = fileProvider;
             _categoryAppService = categoryAppService;
+            _bookManager = bookManager;
         }
         public async Task<ActionResult> Index(PagedBookResultRequestDto input)
         {
@@ -43,10 +46,10 @@ namespace AbpBookApp.Web.Controllers
         {
             var categories = _categoryAppService.GetAllCategories();
             ViewBag.Categories = categories;
-            var bookDto = await _bookAppService.GetAsync(new EntityDto(Id));
+            var bookDto = await _bookManager.GetByIdAsync(Id);
             var updateDto = new BookUpdateDto
             {
-                Author = bookDto.Author,
+                Author =ObjectMapper.Map<AuthorDto>(bookDto.Author),
                 CategoryId = bookDto.Category.Id,
                 Description = bookDto.Description,
                 Id = bookDto.Id,
@@ -122,15 +125,17 @@ namespace AbpBookApp.Web.Controllers
                     }
                     else
                     {
-                        // If imageFile is null, keep the existing ImagePath value.
-                        var existingBook = await _bookAppService.GetAsync(new EntityDto(book.Id));
-                        if (existingBook != null)
-                        {
-                            book.ImagePath = existingBook.ImagePath;
-                        }
+                        //// If imageFile is null, keep the existing ImagePath value.
+                        //var existingBook = await _bookAppService.GetAsync(new EntityDto(book.Id));
+                        //if (existingBook != null)
+                        //{
+                        //    book.ImagePath = existingBook.ImagePath;
+                        //}
+
+
                     }
 
-                    await _bookAppService.UpdateAsync(book);
+                 var result =   await _bookAppService.UpdateAsync(book);
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
