@@ -54,10 +54,7 @@
                                             <td>@item.CategoryName</td>
                                             <td>
                                                 <div style="display: flex; gap: 10px;">
-                                                    <a class="btn btn-sm bg-secondary" asp-action="Edit" type="button"
-                                                   asp-route-id="@item.Id" asp-controller="Categories" asp-action="UpdateCategory">
-                                                        <i class="fas fa-pencil-alt"></i> Edit
-                                                    </a>
+                                                
 
                                                     <form asp-controller="Categories" asp-action="Remove" method="post" asp-route-id="@item.Id">
                                                         <input type="hidden" name="inputID" value="@item.Id" />
